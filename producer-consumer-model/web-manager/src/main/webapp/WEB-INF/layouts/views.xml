@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	<definition name="standardLayout" template="/WEB-INF/layouts/standard.jsp"
+		preparer="tilesViewPreparer">
+		<put-attribute name="pageTitle" value="Standard Layout" />
+		<put-attribute name="innerContent" value="" />
+	</definition>
+	
+	<definition name="taskStarter" extends="standardLayout">
+		<put-attribute name="pageTitle" value="TEST" />
+		<put-attribute name="innerContent" value="/WEB-INF/views/taskStarter.jsp"/>
+	</definition>
+	
+</tiles-definitions>

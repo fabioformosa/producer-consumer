@@ -15,7 +15,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @author Fabio Formosa
  * @version 0.0.1
  * @since July 28, 2013
- * 
  */
 public class Main {
 
