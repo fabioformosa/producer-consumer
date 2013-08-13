@@ -1,11 +1,18 @@
-package it.fabioformosa.lab.prodcons.workers;
+package it.fabioformosa.lab.prodcons.spi.workers;
 
-import it.fabioformosa.lab.prodcons.entities.Buffer;
-import it.fabioformosa.lab.prodcons.entities.Item;
+import it.fabioformosa.lab.prodcons.spi.entities.Buffer;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+/**
+ * 
+ * @see RecurrentProducer in core.jar provides an implementation of this
+ *      abstract class
+ * 
+ * @author Fabio Formosa
+ * 
+ */
 public abstract class Producer extends Worker {
 	protected Log log = LogFactory.getLog(Producer.class);
 
@@ -21,11 +28,6 @@ public abstract class Producer extends Worker {
 	@Override
 	public abstract void run();
 
-	@Override
-	protected String getLogHeader() {
-		return getName() + "> ";
-	}
-
-	protected abstract Item produceItem();
+	protected abstract Object produceItem();
 
 }

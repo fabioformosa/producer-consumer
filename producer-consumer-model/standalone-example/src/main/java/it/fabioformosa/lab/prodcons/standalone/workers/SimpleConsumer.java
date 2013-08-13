@@ -1,12 +1,11 @@
-package it.fabioformosa.lab.prodcons.simple;
+package it.fabioformosa.lab.prodcons.standalone.workers;
 
-import it.fabioformosa.lab.prodcons.entities.Buffer;
-import it.fabioformosa.lab.prodcons.entities.Item;
+import it.fabioformosa.lab.prodcons.spi.entities.Buffer;
 import it.fabioformosa.lab.prodcons.workers.impl.LoopConsumer;
 
 /**
  * 
- * Silly consumer get an item from shared buffer and nothing else.
+ * Silly consumer gets an item from shared buffer and get it away.
  * 
  * @author Fabio Formosa
  * 
@@ -18,7 +17,7 @@ public class SimpleConsumer extends LoopConsumer {
 	}
 
 	@Override
-	protected void consumeItem(Item item) {
+	protected void consumeItem(Object item) {
 
 	}
 

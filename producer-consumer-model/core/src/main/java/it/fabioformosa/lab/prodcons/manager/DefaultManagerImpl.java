@@ -1,9 +1,15 @@
 package it.fabioformosa.lab.prodcons.manager;
 
-
-
 import java.util.List;
 
+/**
+ * 
+ * This manager implements the default behavior: to wait all recurrent producer
+ * termination and then to interrupt all consumers
+ * 
+ * @author Fabio Formosa
+ * 
+ */
 public class DefaultManagerImpl extends BaseManager {
 
 	public DefaultManagerImpl() {
@@ -13,6 +19,7 @@ public class DefaultManagerImpl extends BaseManager {
 	/* (non-Javadoc)
 	 * @see it.fabioformosa.lab.prodcons.Manager#exitCondition()
 	 */
+	@Override
 	public void exitCondition() {
 		waitProducers(producers);
 		terminateConsumers(consumers);

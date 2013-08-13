@@ -1,30 +1,14 @@
 package it.fabioformosa.lab.prodcons.workers;
 
-import it.fabioformosa.lab.prodcons.entities.Buffer;
-import it.fabioformosa.lab.prodcons.simple.SimpleConsumer;
-import it.fabioformosa.lab.prodcons.simple.SimpleProducer;
+import it.fabioformosa.lab.prodcons.spi.entities.Buffer;
+import it.fabioformosa.lab.prodcons.spi.workers.Worker;
 
-public class WorkerFactory {
+public interface WorkerFactory {
 
-	public enum WorkerType {
-		CONS, PROD
-	}
+	public abstract Worker getConsumerInstance();
 
-	private Buffer buffer;
+	public abstract Worker getProducerInstance();
 
-	static private int consIndex = 0;
-	static private int prodIndex = 0;
-
-	public Worker getConsumerInstance() {
-		return new SimpleConsumer(consIndex++, buffer);
-	}
-
-	public Worker getProducerInstance() {
-		return new SimpleProducer(prodIndex++, buffer);
-	}
-
-	public void setBuffer(Buffer buffer) {
-		this.buffer = buffer;
-	}
+	public abstract void setBuffer(Buffer buffer);
 
 }

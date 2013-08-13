@@ -100,5 +100,7 @@
   <modules>
     <module>core</module>
     <module>web-manager</module>
+    <module>spi</module>
+    <module>standalone-example</module>
   </modules>
 </project>

@@ -1,9 +1,16 @@
 package it.fabioformosa.lab.prodcons.workers.impl;
 
-import it.fabioformosa.lab.prodcons.entities.Buffer;
-import it.fabioformosa.lab.prodcons.entities.Item;
-import it.fabioformosa.lab.prodcons.workers.Producer;
+import it.fabioformosa.lab.prodcons.spi.entities.Buffer;
+import it.fabioformosa.lab.prodcons.spi.workers.Producer;
 
+/**
+ * 
+ * it runs a cycleNum of times and it puts X items into the buffer
+ * 
+ * 
+ * @author Fabio Formosa
+ * 
+ */
 public abstract class RecurrentProducer extends Producer {
 
 	static final int LIFE_CYCLE = 10;
@@ -24,7 +31,7 @@ public abstract class RecurrentProducer extends Producer {
 	@Override
 	public void run() {
 		while (cycleNum > 0) {
-			Item item = produceItem();
+			Object item = produceItem();
 
 			try {
 				buffer.addItem(item);

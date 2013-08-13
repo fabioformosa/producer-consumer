@@ -1,6 +1,6 @@
-package it.fabioformosa.lab.prodcons;
+package it.fabioformosa.lab.prodcons.standalone;
 
-import it.fabioformosa.lab.prodcons.manager.BaseManager;
+import it.fabioformosa.lab.prodcons.spi.workers.Manager;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -8,9 +8,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * It creates and starts a set of producer threads and a set of consumer
- * threads, then it stops to wait all producers ends. Finally it terminates all
- * consumers.
+ * It gets the manager bean from application context and launches it
  * 
  * @author Fabio Formosa
  * @version 0.0.1
@@ -29,9 +27,9 @@ public class Main {
 		AbstractApplicationContext ctx = null;
 		try {
 			ctx = new ClassPathXmlApplicationContext(
-					new String[] { "application-context.xml" });
+					new String[] { "standalone-context.xml" });
 
-			BaseManager manager = (BaseManager) ctx.getBean("manager");
+			Manager manager = (Manager) ctx.getBean("manager");
 			manager.run();
 
 		} catch (Exception e) {

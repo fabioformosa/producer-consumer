@@ -1,9 +1,14 @@
 package it.fabioformosa.lab.prodcons.workers.impl;
 
-import it.fabioformosa.lab.prodcons.entities.Buffer;
-import it.fabioformosa.lab.prodcons.entities.Item;
-import it.fabioformosa.lab.prodcons.workers.Consumer;
+import it.fabioformosa.lab.prodcons.spi.entities.Buffer;
+import it.fabioformosa.lab.prodcons.spi.workers.Consumer;
 
+/**
+ * It consumes item until manager stops it
+ * 
+ * @author Fabio Formosa
+ * 
+ */
 public abstract class LoopConsumer extends Consumer {
 
 	public LoopConsumer(int i, Buffer buffer) {
@@ -12,19 +17,19 @@ public abstract class LoopConsumer extends Consumer {
 
 	@Override
 	public void run() {
-	
+
 		while (true) {
 			if (Thread.currentThread().isInterrupted())
 				break;
-	
+
 			try {
-				Item item = buffer.getItem();
+				Object item = buffer.getItem();
 				consumeItem(item);
 			} catch (InterruptedException e1) {
 				break;
 			}
 		}
-	
+
 		log.trace(getLogHeader() + "Ended");
 	}
 

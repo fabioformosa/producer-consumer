@@ -5,32 +5,26 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
- <aop:aspectj-autoproxy/> 
-    
- <bean id="buffer" class="it.fabioformosa.lab.prodcons.entities.impl.SimpleBufferImpl">
-     <constructor-arg name="size" value="3"/>
- </bean>
- 
- <bean id="workerFactory" class="it.fabioformosa.lab.prodcons.workers.WorkerFactory">
+  <import resource="classpath*:spi-context.xml"/>
+
+  <bean id="workerFactory" class="it.fabioformosa.lab.prodcons.standalone.workers.SimpleWorkerFactory">
  	<property name="buffer" ref="buffer"/>    
- </bean>
+  </bean>
  
- <bean id="manager" class="it.fabioformosa.lab.prodcons.manager.DefaultManagerImpl">
+  <bean id="manager" class="it.fabioformosa.lab.prodcons.manager.DefaultManagerImpl">
      <property name="workerFactory" ref="workerFactory" />
      <property name="producerNum" value="4" />
      <property name="consumerNum" value="2" />
- </bean>
- 
- <bean id="consumer" scope="prototype" class="it.fabioformosa.lab.prodcons.simple.SimpleConsumer"
+  </bean>
+  
+  <bean id="consumer" scope="prototype" class="it.fabioformosa.lab.prodcons.standalone.workers.SimpleConsumer"
      factory-bean="workerFactory"
      factory-method="getConsumerInstance">
  </bean>
 
- <bean id="producer" scope="prototype" class="it.fabioformosa.lab.prodcons.simple.SimpleProducer"
+ <bean id="producer" scope="prototype" class="it.fabioformosa.lab.prodcons.standalone.workers.SimpleProducer"
      factory-bean="workerFactory"
      factory-method="getProducerInstance">
  </bean>
- 
- <bean id="logAspect" class="it.fabioformosa.lab.prodcons.aspects.BufferLogAspect" />
-    
+  
 </beans>
