@@ -1,4 +1,29 @@
+.inline{
+	float: left;
+}
+.clearer{
+	clear: both;
+}
 
+#fab_logo_img{
+	height:41px;
+}
+
+#appTitle{
+	text-transform: uppercase;
+	color: white;
+}
+
+#headerBar > li > a{
+	color: #cdbfe3;
+}
+
+.formError{
+	font-size: 0.8em;
+	color: red;
+}
+
+/*
 body{
 	font-family: "Roboto", Arial;
 }
@@ -6,14 +31,6 @@ body{
 h1{
 	text-transform: uppercase;
 	color: #426DAB;
-}
-
-.clearer{
-	clear: both;
-}
-
-.inline{
-	float: left;
 }
 
 #headerTitleContainer{
@@ -29,7 +46,4 @@ h1{
 	padding: 0;
 	margin: 0;
 }
-
-#logo{
-	width: 60px;
-}
+*/

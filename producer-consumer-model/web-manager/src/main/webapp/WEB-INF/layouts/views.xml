@@ -13,4 +13,9 @@
 		<put-attribute name="innerContent" value="/WEB-INF/views/taskStarter.jsp"/>
 	</definition>
 	
+	<definition name="panel" extends="standardLayout">
+		<put-attribute name="pageTitle" value="Manager Panel" />	    
+		<put-attribute name="innerContent" value="/WEB-INF/views/panel.jsp"/>
+	</definition>
+	
 </tiles-definitions>

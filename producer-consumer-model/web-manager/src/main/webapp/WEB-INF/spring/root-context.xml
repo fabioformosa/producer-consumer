@@ -9,6 +9,25 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd">
 
-<!--     <import resource="classpath:applicationContext.xml" /> -->
+	<import resource="classpath*:spi-context.xml" />
+	<import resource="model-context.xml" />
+	
+	<bean id="workerFactory" class="it.fabioformosa.lab.prodcons.workers.simple.SimpleWorkerFactory">
+ 		<property name="buffer" ref="buffer"/>    
+  	</bean>
+ 
+	<bean id="manager" class="it.fabioformosa.lab.prodcons.model.SimpleManager">
+	   <property name="workerFactory" ref="workerFactory" />
+	</bean>
+  
+    <bean id="consumer" scope="prototype" class="it.fabioformosa.lab.prodcons.workers.simple.SimpleConsumer"
+       factory-bean="workerFactory"
+       factory-method="getConsumerInstance">
+    </bean>
+
+    <bean id="producer" scope="prototype" class="it.fabioformosa.lab.prodcons.workers.simple.SimpleProducer"
+       factory-bean="workerFactory"
+       factory-method="getProducerInstance">
+    </bean>
     
 </beans>

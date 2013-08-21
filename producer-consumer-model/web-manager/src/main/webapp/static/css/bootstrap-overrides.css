@@ -1,0 +1,7 @@
+body { padding-top: 70px; }
+
+#fab_logo.navbar-brand{
+	padding-top: 0;
+	padding-bottom: 0;
+	margin-top:5px;
+}

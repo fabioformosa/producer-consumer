@@ -1,6 +1,8 @@
 package it.fabioformosa.lab.prodcons.manager;
 
+import it.fabioformosa.lab.prodcons.spi.workers.Consumer;
 import it.fabioformosa.lab.prodcons.spi.workers.Manager;
+import it.fabioformosa.lab.prodcons.spi.workers.Producer;
 import it.fabioformosa.lab.prodcons.spi.workers.Worker;
 import it.fabioformosa.lab.prodcons.workers.WorkerFactory;
 
@@ -28,15 +30,20 @@ public abstract class BaseManager implements Manager {
 	protected WorkerFactory workerFactory;
 
 	protected List<Thread> producers;
-	protected List<Thread> consumers;
 
+	protected List<Thread> consumers;
 	protected int producerNum = DEFAULT_PRODUCER_NUM;
+
 	protected int consumerNum = DEFAULT_CONSUMER_NUM;
 
 	public BaseManager() {
 		super();
 		producers = new ArrayList<Thread>(producerNum);
 		consumers = new ArrayList<Thread>(consumerNum);
+	}
+
+	public WorkerFactory getWorkerFactory() {
+		return workerFactory;
 	}
 
 	@Override
@@ -48,10 +55,12 @@ public abstract class BaseManager implements Manager {
 
 	}
 
+	@Override
 	public void setConsumerNum(int consumerNum) {
 		this.consumerNum = consumerNum;
 	}
 
+	@Override
 	public void setProducerNum(int producerNum) {
 		this.producerNum = producerNum;
 	}
@@ -60,6 +69,7 @@ public abstract class BaseManager implements Manager {
 	public void setupWorkers() {
 		for (int i = 0; i < consumerNum; i++) {
 			Worker consumerInstance = workerFactory.getConsumerInstance();
+			onConsumerSetup((Consumer) consumerInstance);
 			Thread newConsumer = new Thread(consumerInstance,
 					consumerInstance.getName());
 			newConsumer.start();
@@ -68,6 +78,7 @@ public abstract class BaseManager implements Manager {
 
 		for (int i = 0; i < producerNum; i++) {
 			Worker producerInstance = workerFactory.getProducerInstance();
+			onProducerSetup((Producer) producerInstance);
 			Thread newProducer = new Thread(producerInstance,
 					producerInstance.getName());
 			newProducer.start();
@@ -79,5 +90,9 @@ public abstract class BaseManager implements Manager {
 	public void setWorkerFactory(WorkerFactory workerFactory) {
 		this.workerFactory = workerFactory;
 	}
+
+	abstract protected void onConsumerSetup(Consumer consumerInstance);
+
+	abstract protected void onProducerSetup(Producer producerInstance);
 
 }

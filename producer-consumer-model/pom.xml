@@ -103,4 +103,18 @@
     <module>spi</module>
     <module>standalone-example</module>
   </modules>
+  <dependencyManagement>
+  	<dependencies>
+  		<dependency>
+  			<groupId>${project.groupId}</groupId>
+  			<artifactId>core</artifactId>
+  			<version>${project.version}</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>${project.groupId}</groupId>
+  			<artifactId>spi</artifactId>
+  			<version>${project.version}</version>
+  		</dependency>
+  	</dependencies>
+  </dependencyManagement>
 </project>

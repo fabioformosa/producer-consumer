@@ -8,9 +8,21 @@
     </encoder>
   </appender>
 
-	<logger name="it.fabioformosa" level="debug"/>
+  <appender name="DB" class="ch.qos.logback.classic.db.DBAppender">
+    <connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">
+      <driverClass>com.mysql.jdbc.Driver</driverClass>
+      <url>jdbc:mysql://localhost:3306/prodcons</url>
+      <user>prodcons_logback</user>
+      <password>logback</password>
+    </connectionSource>
+<!--     <insertHeaders>true</insertHeaders> -->
+  </appender>
 
-  <root level="info">
+  
+  <logger name="it.fabioformosa" level="debug"/>
+
+  <root level="INFO">
     <appender-ref ref="STDOUT" />
+  	<appender-ref ref="DB" />
   </root>
 </configuration>

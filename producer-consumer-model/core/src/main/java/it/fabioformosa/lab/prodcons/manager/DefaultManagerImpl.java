@@ -1,5 +1,8 @@
 package it.fabioformosa.lab.prodcons.manager;
 
+import it.fabioformosa.lab.prodcons.spi.workers.Consumer;
+import it.fabioformosa.lab.prodcons.spi.workers.Producer;
+
 import java.util.List;
 
 /**
@@ -42,6 +45,16 @@ public class DefaultManagerImpl extends BaseManager {
 				break;
 			}
 
+	}
+
+	@Override
+	protected void onConsumerSetup(Consumer consumerInstance) {
+		//noop
+	}
+
+	@Override
+	protected void onProducerSetup(Producer producerInstance) {
+		//noop
 	}
 
 }

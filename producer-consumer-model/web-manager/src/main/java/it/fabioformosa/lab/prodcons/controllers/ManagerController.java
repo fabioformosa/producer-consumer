@@ -1,0 +1,70 @@
+package it.fabioformosa.lab.prodcons.controllers;
+
+import it.fabioformosa.lab.prodcons.dto.ProdConsSetting;
+import it.fabioformosa.lab.prodcons.model.LoggingEvent;
+import it.fabioformosa.lab.prodcons.model.SimpleManager;
+import it.fabioformosa.lab.prodcons.service.LoggingEventService;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+import javax.validation.Valid;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+@RequestMapping("/manager")
+public class ManagerController {
+
+	@Resource
+	private ApplicationContext coreContext;
+
+	@Resource
+	private LoggingEventService loggingEventService;
+
+	@RequestMapping(method = RequestMethod.GET, value = "/panel")
+	public ModelAndView showPanel() {
+		ModelAndView mav = new ModelAndView("panel");
+		mav.addObject("settings", new ProdConsSetting());
+		return mav;
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "/panel")
+	public ModelAndView startWorkers(
+			@Valid @ModelAttribute("settings") ProdConsSetting settings,
+			BindingResult bindingResult) {
+		ModelAndView mav = new ModelAndView("panel");
+
+		if (bindingResult.hasErrors()) {
+			mav.addObject(bindingResult);
+			return mav;
+		}
+
+		loggingEventService.resetLogs();
+
+		SimpleManager manager = (SimpleManager) coreContext.getBean("manager");
+		manager.setConsumerNum(settings.getConsumerNumber());
+		manager.setProducerNum(settings.getProducerNumber());
+		manager.setProducerCycleNum(settings.getProdCycleNumber());
+		manager.run();
+
+		//TODO: replace with ajax polling by client
+		try {
+			Thread.sleep(15000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		List<LoggingEvent> loggingEvents = loggingEventService
+				.listLoggingEvent();
+		mav.addObject("loggingEvents", loggingEvents);
+
+		return mav;
+	}
+}

@@ -28,6 +28,10 @@ public abstract class RecurrentProducer extends Producer {
 		this.cycleNum = cycleNum;
 	}
 
+	public int getCycleNum() {
+		return cycleNum;
+	}
+
 	@Override
 	public void run() {
 		while (cycleNum > 0) {
@@ -43,6 +47,10 @@ public abstract class RecurrentProducer extends Producer {
 		}
 
 		log.trace(getLogHeader() + "Ended");
+	}
+
+	public void setCycleNum(int cycleNum) {
+		this.cycleNum = cycleNum;
 	}
 
 }
