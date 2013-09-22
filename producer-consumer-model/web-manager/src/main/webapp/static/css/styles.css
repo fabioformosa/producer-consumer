@@ -1,3 +1,11 @@
+.validated-form input.ng-invalid.ng-dirty {
+       background-color: #FA787E;
+     }
+   
+.validated-form input.ng-valid.ng-dirty {
+      background-color: #78FA89;
+}
+
 .inline{
 	float: left;
 }

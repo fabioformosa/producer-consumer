@@ -3,7 +3,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" data-framework="angularjs">
 <head>
 	<!-- IE Compatibility: IE9+ -->
 
@@ -37,12 +37,7 @@
 	 <!-- JQUERY UI BOOTSTRAP -->
      <link rel="stylesheet" href="<c:url value="${baseResourceUrl}/css/jquery.ui.1.10.0.ie.css"/>">
      <link rel="stylesheet" href="<c:url value="${baseResourceUrl}/css/jquery-ui-1.10.0.custom.css"/>">
-     
-     
-     <!-- jQuery -->
-	<script src="<c:url value="${baseResourceUrl}/js/jquery-1.8.3.min.js"/>"></script>
-	<script src="<c:url value="${baseResourceUrl}/js/jquery-ui-1.9.2.custom.min.js"/>"></script>
-	 
+	
 </head>
 
 <body>
@@ -81,9 +76,6 @@
 	</div>
 	
 	
-	<!-- Bootstrap -->
-	<script src="<c:url value="${baseResourceUrl}/js/bootstrap.min.js"/>"></script>
-	<!-- Respond -->
-	<script src="<c:url value="${baseResourceUrl}/js/respond.min.js"/>"></script>
+	<script data-main="<c:url value="${baseResourceUrl}/js/main"/>" src="<c:url value="${baseResourceUrl}/js/require.js"/>"></script>
 </body>
 </html>
