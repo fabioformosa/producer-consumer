@@ -57,7 +57,7 @@
 	<div class="col-md-9">
 		<div id="logControllerDiv" class="panel"  data-ng-controller="LogController">
 		  <div class="panel-heading">Statistics</div>
-		  <div class="panel-body" data-ng-init="load()">
+		  <div class="panel-body" data-ng-init="loadLogs()">
 
 		  		<table>
 		    			<tr data-ng-repeat="log in logs">
