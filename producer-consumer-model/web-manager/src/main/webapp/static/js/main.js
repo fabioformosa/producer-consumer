@@ -55,7 +55,7 @@ require(['jquery', 'jqueryUI', 'domReady!' ],
 
 require(['angular','app', 'controllers/LogController'], function (angular, app, LogController) {
 	'use strict';
-	angular.bootstrap(document, ['myapp']);
+	angular.bootstrap(document, ['prodconsApp']);
 	
 //	app.directive('ffValidationSpinner',
 //		function() {
@@ -67,10 +67,4 @@ require(['angular','app', 'controllers/LogController'], function (angular, app, 
 //				};
 //		});
 	
-	
-	//$("#logControllerDiv").scope.load();
 });
-
-//require(['jquery', 'domReady!' ],function($){
-//	$("#logControllerDiv").scope.load();
-//});
