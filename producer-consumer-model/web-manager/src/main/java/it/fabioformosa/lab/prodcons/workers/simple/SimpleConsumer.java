@@ -12,8 +12,19 @@ import it.fabioformosa.lab.prodcons.workers.impl.LoopConsumer;
  */
 public class SimpleConsumer extends LoopConsumer {
 
+	private int taskId;
+
 	public SimpleConsumer(int i, Buffer buffer) {
 		super(i, buffer);
+	}
+
+	@Override
+	public String getName() {
+		return "Task-" + taskId + "-" + super.getName();
+	}
+
+	public void setTaskId(int taskId) {
+		this.taskId = taskId;
 	}
 
 	@Override

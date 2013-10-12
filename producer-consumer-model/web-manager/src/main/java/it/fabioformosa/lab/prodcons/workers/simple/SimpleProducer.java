@@ -15,8 +15,19 @@ import java.util.Random;
  */
 public class SimpleProducer extends RecurrentProducer {
 
+	private int taskId;
+
 	public SimpleProducer(int i, Buffer buffer) {
 		super(i, buffer);
+	}
+
+	@Override
+	public String getName() {
+		return "Task-" + taskId + "-" + super.getName();
+	}
+
+	public void setTaskId(int taskId) {
+		this.taskId = taskId;
 	}
 
 	@Override

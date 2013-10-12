@@ -56,7 +56,7 @@
 	    <nav class="collapse navbar-collapse navbar-ex1-collapse">
 	      <ul id="headerBar" class="nav navbar-nav">
 	        <li>
-	          <a id="appTitle">${title}</a>
+	          <a id="appTitle" href="<c:url value="panel" />">${title}</a>
 	        </li>
 	        <li>
 	          <a>By Fabio Formosa</a>
@@ -76,6 +76,6 @@
 	</div>
 	
 	
-	<script data-main="<c:url value="${baseResourceUrl}/js/main"/>" src="<c:url value="${baseResourceUrl}/js/require.js"/>"></script>
+	<script data-main="../static/js/main" src="<c:url value="${baseResourceUrl}/js/require.js"/>"></script>
 </body>
 </html>

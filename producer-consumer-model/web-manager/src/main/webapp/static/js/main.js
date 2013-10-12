@@ -44,12 +44,21 @@ require(['jquery', 'jqueryUI', 'domReady!' ],
 		function ($, domReady) {
 				$( "#producerNumber" ).spinner({
 					spin : function(event ,ui, scope){
-						$("#producerNumber").attr('value', ui.value);
-						}
+						$("#producerNumber").val(ui.value);
+					}
 				});
 				
-				$( "#consumerNumber" ).spinner();
-				$( "#prodCycleNumber" ).spinner();
+				$( "#consumerNumber" ).spinner({
+					spin : function(event ,ui, scope){
+						$("#consumerNumber").val(ui.value);
+					}
+				});
+				
+				$( "#prodCycleNumber" ).spinner({
+					spin : function(event ,ui, scope){
+						$("#prodCycleNumber").val(ui.value);
+					}
+				});
 		}
  );
 

@@ -1,11 +1,9 @@
 package it.fabioformosa.lab.prodcons.controllers;
 
 import it.fabioformosa.lab.prodcons.dto.ProdConsSetting;
-import it.fabioformosa.lab.prodcons.model.LoggingEvent;
 import it.fabioformosa.lab.prodcons.model.SimpleManager;
 import it.fabioformosa.lab.prodcons.service.LoggingEventService;
-
-import java.util.List;
+import it.fabioformosa.lab.prodcons.service.TaskRegistry;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -31,6 +29,7 @@ public class ManagerController {
 	@RequestMapping(method = RequestMethod.GET, value = "/panel")
 	public ModelAndView showPanel() {
 		ModelAndView mav = new ModelAndView("panel");
+		loggingEventService.resetLogs();
 		mav.addObject("settings", new ProdConsSetting());
 		return mav;
 	}
@@ -39,6 +38,7 @@ public class ManagerController {
 	public ModelAndView startWorkers(
 			@Valid @ModelAttribute("settings") ProdConsSetting settings,
 			BindingResult bindingResult) {
+
 		ModelAndView mav = new ModelAndView("panel");
 
 		if (bindingResult.hasErrors()) {
@@ -46,24 +46,32 @@ public class ManagerController {
 			return mav;
 		}
 
+		//TODO non resettare
 		loggingEventService.resetLogs();
 
 		SimpleManager manager = (SimpleManager) coreContext.getBean("manager");
+		manager.setTaskId(TaskRegistry.getNewTaskId());
 		manager.setConsumerNum(settings.getConsumerNumber());
 		manager.setProducerNum(settings.getProducerNumber());
 		manager.setProducerCycleNum(settings.getProdCycleNumber());
-		manager.run();
 
-		//TODO: replace with ajax polling by client
-		try {
-			Thread.sleep(15000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		TaskRegistry.register(manager);
 
-		List<LoggingEvent> loggingEvents = loggingEventService
-				.listLoggingEvent();
-		mav.addObject("loggingEvents", loggingEvents);
+		Thread managerThread = new Thread(manager);
+		managerThread.start();
+		//manager.run();
+
+		//		//TODO: replace with ajax polling by client
+		//		try {
+		//			Thread.sleep(15000);
+		//		} catch (InterruptedException e) {
+		//			e.printStackTrace();
+		//		}
+
+		//		List<LoggingEvent> loggingEvents = loggingEventService
+		//				.listLoggingEvent();
+		//		mav.addObject("loggingEvents", loggingEvents);
+		mav.addObject("taskId", manager.getTaskId());
 
 		return mav;
 	}

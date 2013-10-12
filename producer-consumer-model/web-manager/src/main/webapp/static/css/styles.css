@@ -20,6 +20,11 @@
 #appTitle{
 	text-transform: uppercase;
 	color: white;
+	
+}
+
+#appTitle:hover{ 
+	color:white;
 }
 
 #headerBar > li > a{

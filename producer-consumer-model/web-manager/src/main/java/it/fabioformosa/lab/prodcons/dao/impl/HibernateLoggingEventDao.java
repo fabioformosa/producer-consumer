@@ -23,4 +23,12 @@ public class HibernateLoggingEventDao extends BaseDaoImpl implements
 		return query.getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<LoggingEvent> listLoggingEvents(int taskId) {
+		Query query = entityManager
+				.createQuery("from LoggingEvent where callerClass like 'it.fabioformosa%' and threadName like 'Task-"
+						+ taskId + "%'");
+		return query.getResultList();
+	}
 }

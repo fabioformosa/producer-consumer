@@ -28,6 +28,11 @@ public class LoggingEventServiceImpl implements LoggingEventService {
 	}
 
 	@Override
+	public List<LoggingEvent> listLoggingEvent(int taskId) {
+		return dao.listLoggingEvents(taskId);
+	}
+
+	@Override
 	public void resetLogs() {
 		helper.resetLogs();
 	}

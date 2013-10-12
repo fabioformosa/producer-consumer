@@ -8,4 +8,6 @@ public interface LoggingEventDAO {
 
 	List<LoggingEvent> listLoggingEvents();
 
+	List<LoggingEvent> listLoggingEvents(int taskId);
+
 }
