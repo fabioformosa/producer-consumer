@@ -20,7 +20,14 @@
 #appTitle{
 	text-transform: uppercase;
 	color: white;
-	
+}
+
+#panelTitle{
+	color: #000;
+}
+#panelTitle:hover{ 
+	color:#FCC158;
+	text-decoration: none;
 }
 
 #appTitle:hover{ 
@@ -28,12 +35,33 @@
 }
 
 #headerBar > li > a{
-	color: #cdbfe3;
+	color: #FCC158;
 }
 
 .formError{
 	font-size: 0.8em;
 	color: red;
+}
+
+.fab-footer {
+	padding-top: 40px;
+	padding-bottom: 30px;
+	margin-top: 100px;
+	color: #777;
+	text-align: center;
+	border-top: 1px solid #e5e5e5;
+}
+
+.footer-content{
+	font-size: 10px;
+	text-align: left;
+	padding: 20px 5px 20px 5px;
+	float: left;
+	border-left: 1px solid #e5e5e5;
+}
+
+.footer-content p{
+	margin: 0;
 }
 
 /*

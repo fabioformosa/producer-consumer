@@ -29,7 +29,7 @@ public class ManagerController {
 	@RequestMapping(method = RequestMethod.GET, value = "/panel")
 	public ModelAndView showPanel() {
 		ModelAndView mav = new ModelAndView("panel");
-		loggingEventService.resetLogs();
+		//		loggingEventService.resetLogs();
 		mav.addObject("settings", new ProdConsSetting());
 		return mav;
 	}
@@ -46,8 +46,7 @@ public class ManagerController {
 			return mav;
 		}
 
-		//TODO non resettare
-		loggingEventService.resetLogs();
+		//		loggingEventService.resetLogs();
 
 		SimpleManager manager = (SimpleManager) coreContext.getBean("manager");
 		manager.setTaskId(TaskRegistry.getNewTaskId());
@@ -59,18 +58,6 @@ public class ManagerController {
 
 		Thread managerThread = new Thread(manager);
 		managerThread.start();
-		//manager.run();
-
-		//		//TODO: replace with ajax polling by client
-		//		try {
-		//			Thread.sleep(15000);
-		//		} catch (InterruptedException e) {
-		//			e.printStackTrace();
-		//		}
-
-		//		List<LoggingEvent> loggingEvents = loggingEventService
-		//				.listLoggingEvent();
-		//		mav.addObject("loggingEvents", loggingEvents);
 		mav.addObject("taskId", manager.getTaskId());
 
 		return mav;

@@ -25,14 +25,15 @@
 		href="<c:url value="${baseResourceUrl}/css/typography.css"/>"
 		media="screen" title="default" /> --%>
 		
-	<!-- STYLESHEETS -->	
-	<link type="text/css" rel="stylesheet"
-		href="<c:url value="${baseResourceUrl}/css/styles.css"/>"
-		media="screen" title="default" />
 		
 	 <!-- BOOTSTRAP -->
      <link rel="stylesheet" href="<c:url value="${baseResourceUrl}/css/bootstrap.min.css"/>">
      <link rel="stylesheet" href="<c:url value="${baseResourceUrl}/css/bootstrap-overrides.css"/>">
+
+	<!-- STYLESHEETS -->	
+	<link type="text/css" rel="stylesheet"
+		href="<c:url value="${baseResourceUrl}/css/styles.css"/>"
+		media="screen" title="default" />
 
 	 <!-- JQUERY UI BOOTSTRAP -->
      <link rel="stylesheet" href="<c:url value="${baseResourceUrl}/css/jquery.ui.1.10.0.ie.css"/>">
@@ -59,7 +60,7 @@
 	          <a id="appTitle" href="<c:url value="panel" />">${title}</a>
 	        </li>
 	        <li>
-	          <a>By Fabio Formosa</a>
+	          <a>© Fabio Formosa</a>
 	        </li>
 	      </ul>
 	    </nav>
@@ -69,12 +70,25 @@
 	<div class="container">
 
 		<h2 id="headerSubTitle">
-			<tiles:getAsString name="pageTitle"/>
+			<a id="panelTitle" href="<c:url value="panel" />"><tiles:getAsString name="pageTitle"/></a>
 		</h2>
 		
 		<tiles:insertAttribute name="innerContent"/>
 	</div>
 	
+	<footer class="fab-footer">
+		<div class="container">
+			<div class="footer-content">
+				<p>Fabio Formosa</p>
+				<p><a href="http://www.fabioformosa.it">www.fabioformosa.it</a></p>
+			</div>
+			<div class="footer-content">
+				<p>${titleVersioned}</p>
+				<p><a href="https://github.com/fabioformosa">github.com/fabioformosa</a></p>
+			</div>
+			<div class="clearer"></div>
+		</div>
+	</footer>
 	
 	<script data-main="../static/js/main" src="<c:url value="${baseResourceUrl}/js/require.js"/>"></script>
 </body>

@@ -16,7 +16,9 @@ import org.slf4j.LoggerFactory;
 public class TilesViewPreparer implements ViewPreparer {
 
 	private String title;
+	private String titleVersioned;
 	private String baseResourceUrl, backendUrl;
+
 	private String imageBaseUrl;
 
 	private static Logger logger = LoggerFactory
@@ -33,9 +35,14 @@ public class TilesViewPreparer implements ViewPreparer {
 		HttpServletRequest request = context.getRequest();
 
 		request.setAttribute("title", title);
+		request.setAttribute("titleVersioned", titleVersioned);
 		request.setAttribute("baseResourceUrl", baseResourceUrl);
 		request.setAttribute("backendUrl", backendUrl);
 
+	}
+
+	public String getTitleVersioned() {
+		return titleVersioned;
 	}
 
 	public void setBackendUrl(String backendUrl) {
@@ -62,6 +69,10 @@ public class TilesViewPreparer implements ViewPreparer {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public void setTitleVersioned(String titleVersioned) {
+		this.titleVersioned = titleVersioned;
 	}
 
 	private boolean checkContext(TilesRequestContext requestContext) {

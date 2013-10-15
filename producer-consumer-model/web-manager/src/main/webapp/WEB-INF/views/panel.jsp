@@ -13,7 +13,7 @@
 
 		<!-- SETUP PANEL -->
 		<div class="panel">
-		  <div class="panel-heading">Setup</div>
+		  <div class="panel-heading panel-cyan">Setup</div>
 		  <div class="panel-body">
 		  
 		  		<c:url value="/manager/panel" var="startAction"/>
@@ -54,7 +54,7 @@
 	<!-- RIGHT PANEL -->
 	<div class="col-md-9">
 		<div id="logControllerDiv" class="panel"  data-ng-controller="LogController">
-		  <div class="panel-heading">Statistics</div>
+		  <div class="panel-heading panel-lime">Statistics</div>
 		  <div class="panel-body" data-ng-init="loadLogs(${taskId})">
 
 		  		<table class="table table-striped">

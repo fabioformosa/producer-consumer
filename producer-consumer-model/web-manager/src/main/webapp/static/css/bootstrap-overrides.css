@@ -5,3 +5,14 @@ body { padding-top: 70px; }
 	padding-bottom: 0;
 	margin-top:5px;
 }
+
+.panel-cyan{
+	background-color: #35B0E0; 
+}
+.panel-lime{
+	background-color: #BEE035; 
+}
+
+.navbar-inverse{
+	background-color: #8B8B8B;
+}

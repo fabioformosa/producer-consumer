@@ -24,6 +24,7 @@
 	<bean id="tilesViewPreparer"
 		class="it.fabioformosa.lab.prodcons.views.TilesViewPreparer">
 		<property name="title" value="${view.title}" />
+		<property name="titleVersioned" value="${view.title.version}" />
 		<property name="baseResourceUrl" value="${view.baseResourceUrl}" />
 		<property name="backendUrl" value="${view.backendUrl}" />
 		<property name="imageBaseUrl" value="${view.imageBaseUrl}" />
