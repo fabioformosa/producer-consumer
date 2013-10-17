@@ -42,6 +42,9 @@ require.config({
 
 require(['jquery', 'jqueryUI', 'domReady!' ],	
 		function ($, domReady) {
+	
+				$("#logLoading").css("display", "none !important");
+	
 				$( "#producerNumber" ).spinner({
 					spin : function(event ,ui, scope){
 						$("#producerNumber").val(ui.value);

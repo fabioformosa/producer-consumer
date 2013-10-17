@@ -37,8 +37,13 @@ public class TilesViewPreparer implements ViewPreparer {
 		request.setAttribute("title", title);
 		request.setAttribute("titleVersioned", titleVersioned);
 		request.setAttribute("baseResourceUrl", baseResourceUrl);
+		request.setAttribute("imageBaseUrl", getImageBaseUrl());
 		request.setAttribute("backendUrl", backendUrl);
 
+	}
+
+	public String getImageBaseUrl() {
+		return baseResourceUrl + "/images";
 	}
 
 	public String getTitleVersioned() {

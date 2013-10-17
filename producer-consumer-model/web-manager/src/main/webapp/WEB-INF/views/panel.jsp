@@ -54,11 +54,12 @@
 	<!-- RIGHT PANEL -->
 	<div class="col-md-9">
 		<div id="logControllerDiv" class="panel"  data-ng-controller="LogController">
-		  <div class="panel-heading panel-lime">Statistics</div>
+		  <div class="panel-heading panel-lime">Statistics <img id="logLoading" src="<c:url value="${imageBaseUrl}/loading.gif"/>" width="25"/> </div>
 		  <div class="panel-body" data-ng-init="loadLogs(${taskId})">
 
-		  		<table class="table table-striped">
+		  		<table id="logTable" class="table table-striped">
 		    			<tr data-ng-repeat="log in logs">
+		    				<td>{{log.timestmp | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
 		    				<td>{{log.callerMethod}}</td>
 		    				<td>{{log.formattedMessage}}</td>
 		    			</tr>

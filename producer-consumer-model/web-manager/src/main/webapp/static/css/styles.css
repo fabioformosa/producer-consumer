@@ -64,6 +64,14 @@
 	margin: 0;
 }
 
+#logTable{
+	font-size: 0.8em;
+}
+
+#logLoading{
+	display: none !important;
+}
+
 /*
 body{
 	font-family: "Roboto", Arial;
