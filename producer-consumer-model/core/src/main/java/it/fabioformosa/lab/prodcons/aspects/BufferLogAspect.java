@@ -21,9 +21,9 @@ public class BufferLogAspect {
 	//	}
 
 	@AfterReturning(pointcut = "execution(* it.fabioformosa.lab.prodcons.spi.entities.Buffer.getItem())", returning = "retVal")
-	public void logDequeueBuffer(JoinPoint joinPoint, Object retVal) {
+	public void logConsumer(JoinPoint joinPoint, Object retVal) {
 		Buffer buffer = (Buffer) joinPoint.getTarget();
-		log.info(Thread.currentThread().getName() + " dequeues " + retVal
+		log.info(Thread.currentThread().getName() + " consumes " + retVal
 				+ " <- " + buffer.toString());
 	}
 
@@ -32,17 +32,17 @@ public class BufferLogAspect {
 		Boolean retValBool = (Boolean) retVal;
 		if (retValBool) {
 			Buffer buffer = (Buffer) joinPoint.getTarget();
-			log.info(Thread.currentThread().getName() + " : Empty condition ("
-					+ buffer.toString() + ") for getting request");
+			log.info(Thread.currentThread().getName() + " can't consume "
+					+ buffer.toString() + " (EMPTY CONDITION)");
 		}
 
 	}
 
 	@Before("execution(* it.fabioformosa.lab.prodcons.spi.entities.Buffer.addItem(..))")
-	public void logEnqueueBuffer(JoinPoint joinPoint) {
+	public void logProducer(JoinPoint joinPoint) {
 		Object[] args = joinPoint.getArgs();
 		Buffer buffer = (Buffer) joinPoint.getTarget();
-		log.info(Thread.currentThread().getName() + " enqueues " + args[0]
+		log.info(Thread.currentThread().getName() + " produces " + args[0]
 				+ " -> " + buffer.toString());
 	}
 
@@ -51,16 +51,16 @@ public class BufferLogAspect {
 		Boolean retValBool = (Boolean) retVal;
 		if (!retValBool) {
 			Buffer buffer = (Buffer) joinPoint.getTarget();
-			log.info(Thread.currentThread().getName() + " : Full condition ("
-					+ buffer.toString() + ") for putting request");
+			log.info(Thread.currentThread().getName() + " can't put in "
+					+ buffer.toString() + " (FULL CONDITION)");
 		}
 
 	}
 
 	@Before("call(* java.lang.Object.wait(..))")
-	public void logWait(JoinPoint joinPoint) {
+	public void logBlockedWorker(JoinPoint joinPoint) {
 		StringBuilder sb = new StringBuilder();
-		sb.append(Thread.currentThread().getName() + " has been blocked!");
+		sb.append(Thread.currentThread().getName() + " is blocked now!");
 		log.info(sb.toString());
 	}
 
