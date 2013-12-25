@@ -1,8 +1,9 @@
 'use strict';
-define(['angular', 'controllers/controllers', 'restangular'], function (angular, controllers, restangular) {
-        return angular.module('prodconsApp', ['controllers', 'restangular'])
-        	.config(function(RestangularProvider) {
-        			RestangularProvider.setBaseUrl('/web-manager');
-        	});
+define(['angular', 'controllers/controllers', 'directives/directives', 'restangular'], 
+		function (angular, controllers, directives, restangular) {
+	        return angular.module('prodconsApp', ['controllers', 'directives', 'restangular'])
+	        	.config(function(RestangularProvider) {
+	        			RestangularProvider.setBaseUrl('/prodcons-manager');
+	        	});
         
 });

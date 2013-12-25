@@ -44,39 +44,36 @@ require(['jquery', 'jqueryUI', 'domReady!' ],
 		function ($, domReady) {
 	
 				$("#logLoading").css("display", "none !important");
-	
-				$( "#producerNumber" ).spinner({
-					spin : function(event ,ui, scope){
-						$("#producerNumber").val(ui.value);
-					}
-				});
 				
-				$( "#consumerNumber" ).spinner({
-					spin : function(event ,ui, scope){
-						$("#consumerNumber").val(ui.value);
-					}
-				});
-				
-				$( "#prodCycleNumber" ).spinner({
-					spin : function(event ,ui, scope){
-						$("#prodCycleNumber").val(ui.value);
-					}
-				});
+//				$('[name="producerNumber"]').spinner();
+//				
+//				$('[name="consumerNumber"]').spinner();
+//				
+//				$('[name="prodCycleNumber"]').spinner();
+//				
+//				$('[name="producerNumber"]').spinner({
+//					spin : function(event ,ui, scope){
+//						$('input[name="producerNumber"]').val(ui.value);
+//					}
+//				});
+//				
+//				$('[name="consumerNumber"]').spinner({
+//					spin : function(event ,ui, scope){
+//						$('[name="consumerNumber"]').attr("value",ui.value);
+//					}
+//				});
+//				
+//				$('[name="prodCycleNumber"]').spinner({
+//					spin : function(event ,ui, scope){
+//						$('[name="prodCycleNumber"]').attr("value",ui.value);
+//					}
+//				});
 		}
  );
 
-require(['angular','app', 'controllers/LogController'], function (angular, app, LogController) {
+require(['angular','app', 'controllers/LogController', 'directives/CustomSpinnerDirective'], 
+		function (angular, app, LogController, CustomSpinnerDirective) {
 	'use strict';
 	angular.bootstrap(document, ['prodconsApp']);
-	
-//	app.directive('ffValidationSpinner',
-//		function() {
-//			return {
-//				restrict: 'A',
-//				link: function(scope, element, attrs) {
-//					console.log("spinner value changed!");
-//					}
-//				};
-//		});
 	
 });
