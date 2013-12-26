@@ -12,11 +12,15 @@
 	<import resource="classpath*:spi-context.xml" />
 	<import resource="model-context.xml" />
 	
+	<bean id="logInitializer" class="it.fabioformosa.lab.prodcons.controllers.LogInitializer"
+		init-method="resetLogs">
+	</bean>
+	
 	<bean id="workerFactory" class="it.fabioformosa.lab.prodcons.workers.simple.SimpleWorkerFactory">
  		<property name="buffer" ref="buffer"/>    
   	</bean>
  
-	<bean id="manager" class="it.fabioformosa.lab.prodcons.model.SimpleManager">
+	<bean id="manager" scope="prototype" class="it.fabioformosa.lab.prodcons.model.SimpleManager">
 	   <property name="workerFactory" ref="workerFactory" />
 	</bean>
   

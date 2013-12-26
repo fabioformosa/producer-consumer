@@ -58,6 +58,7 @@ public class ManagerController {
 
 		Thread managerThread = new Thread(manager);
 		managerThread.start();
+		
 		mav.addObject("taskId", manager.getTaskId());
 
 		return mav;

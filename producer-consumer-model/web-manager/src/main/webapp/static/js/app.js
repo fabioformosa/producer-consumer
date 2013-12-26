@@ -3,7 +3,7 @@ define(['angular', 'controllers/controllers', 'directives/directives', 'restangu
 		function (angular, controllers, directives, restangular) {
 	        return angular.module('prodconsApp', ['controllers', 'directives', 'restangular'])
 	        	.config(function(RestangularProvider) {
-	        			RestangularProvider.setBaseUrl('/prodcons-manager');
+	        			RestangularProvider.setBaseUrl('/prodcons');
 	        	});
         
 });
