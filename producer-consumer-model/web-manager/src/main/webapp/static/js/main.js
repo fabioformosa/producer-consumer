@@ -9,6 +9,7 @@ require.config({
 		domReady : 'lib/requirejs/domReady',
 		lodash : 'lib/lodash',
 		restangular : 'lib/restangular',
+		smartTable: 'lib/Smart-Table.ajax.debug',
 		respond : 'lib/respond.min',
 	},
 	shim : {
@@ -32,6 +33,10 @@ require.config({
 		restangular:{
 			deps : ['angular', 'lodash'],
 			exports : 'restangular', 
+		},
+		smartTable:{
+			deps: ['angular'],
+			exports: 'smartTable',
 		},
 		enforceDefine: true
 	},

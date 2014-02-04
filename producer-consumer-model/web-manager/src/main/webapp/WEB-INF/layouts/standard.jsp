@@ -38,6 +38,10 @@
 	 <!-- JQUERY UI BOOTSTRAP -->
      <link rel="stylesheet" href="<c:url value="${baseResourceUrl}/css/jquery.ui.1.10.0.ie.css"/>">
      <link rel="stylesheet" href="<c:url value="${baseResourceUrl}/css/jquery-ui-1.10.0.custom.css"/>">
+     
+     
+     <link rel="stylesheet"
+				href="<c:url value="${baseResourceUrl}/css/smart-table.css"/>" />
 	
 </head>
 

@@ -4,6 +4,8 @@ import it.fabioformosa.lab.prodcons.dao.LoggingEventDAO;
 import it.fabioformosa.lab.prodcons.dao.LoggingEventHelper;
 import it.fabioformosa.lab.prodcons.model.LoggingEvent;
 import it.fabioformosa.lab.prodcons.service.LoggingEventService;
+import it.fabioformosa.lab.prodcons.utils.PaginatedList;
+import it.fabioformosa.lab.prodcons.utils.PaginatedListRequest;
 
 import java.util.List;
 
@@ -36,5 +38,12 @@ public class LoggingEventServiceImpl implements LoggingEventService {
 	public void resetLogs() {
 		helper.resetLogs();
 	}
+
+	@Override
+	public PaginatedList<LoggingEvent> listPaginatedLoggingEvents(int taskId,
+			PaginatedListRequest paginatedListRequest) {
+		return dao.listPaginatedLoggingEvents(taskId, paginatedListRequest);
+	}
+
 
 }

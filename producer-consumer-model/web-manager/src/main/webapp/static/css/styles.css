@@ -72,6 +72,29 @@
 	display: none !important;
 }
 
+div.smart-table-container{
+	text-align: center;
+	margin: auto;
+}
+
+table.smart-table{
+	font-size: 10px;
+	max-width: 800px;
+	margin: auto;
+}
+table.smart-table th{
+	font-size:12px;
+}
+
+table.smart-table td{
+	max-width: 300px;
+}
+
+.smart-table-filter-form{
+	font-size: 12px;
+}
+
+
 /*
 body{
 	font-family: "Roboto", Arial;

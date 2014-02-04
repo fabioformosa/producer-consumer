@@ -1,5 +1,7 @@
 package it.fabioformosa.lab.prodcons.views;
 
+import it.fabioformosa.lab.prodcons.utils.URLUtility;
+
 import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +36,9 @@ public class TilesViewPreparer implements ViewPreparer {
 		ServletTilesRequestContext context = (ServletTilesRequestContext) requestContext;
 		HttpServletRequest request = context.getRequest();
 
+		backendUrl = URLUtility.extractOrchestratorPath(request);
+		request.setAttribute("backendUrl", backendUrl);
+		
 		request.setAttribute("title", title);
 		request.setAttribute("titleVersioned", titleVersioned);
 		request.setAttribute("baseResourceUrl", baseResourceUrl);

@@ -1,0 +1,262 @@
+/* app css stylesheet */
+
+.smartTable .menu {
+    list-style: none;
+    border-bottom: 0.1em solid black;
+    margin-bottom: 2em;
+    padding: 0 0 0.5em;
+}
+
+.smartTable .menu:before {
+    content: "[";
+}
+
+.smartTable .menu:after {
+    content: "]";
+}
+
+.smartTable .menu > li {
+    display: inline;
+}
+
+.smartTable .menu > li:before {
+    content: "|";
+    padding-right: 0.3em;
+}
+
+.smartTable .menu > li:nth-child(1):before {
+    content: "";
+    padding: 0;
+}
+
+.smartTable .smart-table-data-row.selected {
+    background: darkgray;
+}
+
+.smartTable .header-content:before {
+    content: ' ';
+    position: relative;
+    left: -5px;
+}
+
+.smartTable .sort-ascent:before {
+    content: "\25B4";
+}
+
+.smartTable .sort-descent:before {
+    content: "\25BE";
+}
+
+.smartTable .pagination {
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* .smartTable .smart-table th { */
+/*     width: 120px; */
+/*     padding: 0 20px; */
+/* } */
+
+.smartTable .shuffle {
+    float: right;
+}
+
+/*  ******** */
+.smartTable .pagination ul {
+    display: inline-block;
+    *display: inline;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    *zoom: 1;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.smartTable .pagination ul > li {
+    display: inline;
+}
+
+.smartTable .pagination ul > li > a,
+.smartTable .pagination ul > li > span {
+    float: left;
+    padding: 4px 12px;
+    line-height: 20px;
+    text-decoration: none;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-left-width: 0;
+}
+
+.smartTable .pagination ul > li > a:hover,
+.smartTable .pagination ul > li > a:focus,
+.smartTable .pagination ul > .active > a,
+.smartTable .pagination ul > .active > span {
+    background-color: #f5f5f5;
+}
+
+.smartTable .pagination ul > .active > a,
+.smartTable .pagination ul > .active > span {
+    color: #999999;
+    cursor: default;
+}
+
+.smartTable .pagination ul > .disabled > span,
+.smartTable .pagination ul > .disabled > a,
+.smartTable .pagination ul > .disabled > a:hover,
+.smartTable .pagination ul > .disabled > a:focus {
+    color: #999999;
+    cursor: default;
+    background-color: transparent;
+}
+
+.smartTable .pagination ul > li:first-child > a,
+.smartTable .pagination ul > li:first-child > span {
+    border-left-width: 1px;
+    -webkit-border-bottom-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    -webkit-border-top-left-radius: 4px;
+    border-top-left-radius: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    -moz-border-radius-topleft: 4px;
+}
+
+.smartTable .pagination ul > li:last-child > a,
+.smartTable .pagination ul > li:last-child > span {
+    -webkit-border-top-right-radius: 4px;
+    border-top-right-radius: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    -moz-border-radius-topright: 4px;
+    -moz-border-radius-bottomright: 4px;
+}
+
+.smartTable .tab-container {
+    margin: auto;
+}
+
+.smartTable table th, .smartTable table td {
+	
+/*     padding: 0 20px; */
+	
+    padding: 8px;
+    line-height: 20px;
+    text-align: left;
+    vertical-align: top;
+/*     border: 1px solid rgba(34, 102, 153, 0.52); */
+}
+
+
+table.smart-table{
+	border-top: 1px solid rgb(221, 221, 221);
+	border-bottom: 1px solid rgb(221, 221, 221);
+	border: 1px solid #ddd;
+	width:100%;
+}
+
+table.smart-table thead tr {
+  color: #707070;
+  font-weight: normal;
+  background: #F2F2F2;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#f8f8f8), to(#ececec));
+  background-image: -webkit-linear-gradient(top, #f8f8f8, 0%, #ececec, 100%);
+  background-image: -moz-linear-gradient(top, #f8f8f8 0%, #ececec 100%);
+  background-image: linear-gradient(to bottom, #f8f8f8 0%, #ececec 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff8f8f8', endColorstr='#ffececec', GradientType=0);
+}
+table.smart-table thead tr th {
+  border:1px solid #DDD;
+  font-weight: bold;
+}
+table.smart-table thead tr th [class*="icon-"]:first-child {
+  margin-right: 2px;
+}
+/* table.smart-table thead tr th:first-child { */
+/*   border-left-color: #F1F1F1; */
+/* } */
+/* table.smart-table thead tr th:left-child { */
+/*   border-right-color: #F1F1F1; */
+/* } */
+
+.smart-table-global-search-row td{
+/* 	background-color: rgb(239, 243, 248); */
+	background-color: white;
+}
+
+.smart-table-header-cell{
+	text-transform: capitalize;
+} 
+
+table.smart-table td{
+	border: 1px solid #ddd;
+}
+
+.smart-table tbody>tr:nth-child(odd)>td, .table-striped>tbody>tr:nth-child(odd)>th {
+background-color: #f9f9f9;
+}
+
+.smart-table .smart-table-footer-row{
+/* 	background-color: #EFF3F8; */
+	background-color: white;
+}
+
+/*SPINNER*/
+.smartTableSpinner{
+	width:100%; 
+	text-align:center;
+	margin:50px 0 50px 0;
+}
+
+#smartTableSpinnerRow{
+	background-color: white;
+}
+
+/*ERROR*/
+.smartTableErrorBox{
+	width:100%; 
+	text-align:center;
+	margin:50px 0 50px 0;
+}
+.smartTableErrorImg{
+	height: 28px;
+}
+.smartTableErrorTxt{
+	color: #FF0000;
+}
+
+/*PAGINATION COUNTER*/
+.paginationCounter{
+	width: 100%;
+	text-align: center;
+	font-size: 11px;
+	color: gray;
+}
+
+.paginationCounterError{
+	color: red;
+}
+
+#smartTableSearchTable{
+	width: 100%;
+	border : 0;
+}
+
+#smartTableSearchTable tr{
+	background-color: white;
+	border: 0;
+}
+
+#smartTableSearchTable td{
+	background-color: white;
+	border: 0;
+}
+
+#smartTableFilterBtns{
+	padding: 8px 0 0 8px;
+}

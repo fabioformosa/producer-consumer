@@ -2,6 +2,9 @@ package it.fabioformosa.lab.prodcons.dao.impl;
 
 import it.fabioformosa.lab.prodcons.dao.LoggingEventDAO;
 import it.fabioformosa.lab.prodcons.model.LoggingEvent;
+import it.fabioformosa.lab.prodcons.utils.PaginatedList;
+import it.fabioformosa.lab.prodcons.utils.PaginatedListFetcher;
+import it.fabioformosa.lab.prodcons.utils.PaginatedListRequest;
 
 import java.util.List;
 
@@ -30,5 +33,26 @@ public class HibernateLoggingEventDao extends BaseDaoImpl implements
 				.createQuery("from LoggingEvent where callerClass like 'it.fabioformosa%' and threadName like 'Task-"
 						+ taskId + "%'");
 		return query.getResultList();
+	}
+
+	@Override
+	public PaginatedList<LoggingEvent> listPaginatedLoggingEvents(int taskId,
+			PaginatedListRequest paginatedListRequest) {
+		
+		LoggingEventFetcher fetcher = new LoggingEventFetcher(LoggingEvent.class);
+
+		LoggingEventPaginatedRequest loggingEventPaginatedRequest = paginatedListRequestConvertion(
+				taskId, paginatedListRequest);
+		
+		return fetcher.fetch(entityManager, loggingEventPaginatedRequest);
+	}
+
+	private LoggingEventPaginatedRequest paginatedListRequestConvertion(
+			int taskId, PaginatedListRequest paginatedListRequest) {
+		LoggingEventPaginatedRequest loggingEventPaginatedRequest = new LoggingEventPaginatedRequest(taskId, paginatedListRequest.getCurrPage(), paginatedListRequest.getPageSize());
+		loggingEventPaginatedRequest.setFirstItem(paginatedListRequest.getFirstItem());
+		loggingEventPaginatedRequest.setFilters(paginatedListRequest.getFilters());
+		loggingEventPaginatedRequest.setOrdering(paginatedListRequest.getOrderCriterion());
+		return loggingEventPaginatedRequest;
 	}
 }

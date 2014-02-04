@@ -6,6 +6,25 @@
 <%@ page import="it.fabioformosa.lab.prodcons.views.LoggingViewHelper" %>
 <%@ page import="it.fabioformosa.lab.prodcons.model.LoggingEvent" %>
 
+
+<script type="text/javascript">
+
+	function LogGridCtr($scope){
+		$scope.columnCollection = [
+	                            {label: 'Timestamp', map: 'timestmp', isInFilterForm: false},
+	                            {label: 'Caller', map: 'callerMethod', isInFilterForm: true},
+	                            {label: 'Log', map: 'formattedMessage', isInFilterForm: true},
+	                        ];
+		$scope.globalConfig = {
+		        isPaginationEnabled: true,
+		        itemsByPage: 10,
+		        isFilterFormActivated : true,
+		        resourceBaseURL : "${backendUrl}/logs/${taskId}" //TODO costruire a modo questa URL
+		    };
+	}
+
+</script>
+
 <div class="row">
 
 	<!--  LEFT PANEL -->
@@ -73,15 +92,25 @@
 		  		Statistics <img id="logLoading" src="<c:url value="${imageBaseUrl}/loading.gif"/>" width="25"/>
 		  </div>
 		
-		  <div class="panel-body" data-ng-init="loadLogs(${taskId})">
-		  		<table id="logTable" class="table table-striped">
-		    			<tr data-ng-repeat="log in logs">
-		    				<td>{{log.timestmp | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
-		    				<td>{{log.callerMethod}}</td>
-		    				<td>{{log.formattedMessage}}</td>
-		    			</tr>
-		    	</table>
-		  </div>
+<%-- 		  <div class="panel-body" data-ng-init="loadLogs(${taskId})"> --%>
+<!-- 		  		<table id="logTable" class="table table-striped"> -->
+<!-- 		    			<tr data-ng-repeat="log in logs"> -->
+<!-- 		    				<td>{{log.timestmp | date:'yyyy-MM-dd HH:mm:ss Z'}}</td> -->
+<!-- 		    				<td>{{log.callerMethod}}</td> -->
+<!-- 		    				<td>{{log.formattedMessage}}</td> -->
+<!-- 		    			</tr> -->
+<!-- 		    	</table> -->
+<!-- 		  </div> -->
+	
+			<c:if test="${taskId > 0}">
+			    <div class="table-header">
+					Logs
+				</div>
+				<div ng-controller="LogGridCtr" class="table-responsive smartTable dataTables_wrapper">
+			    	<div class="table table-striped" smart-table columns="columnCollection" config="globalConfig"></div>
+				</div>
+			</c:if>
+
 	  	</div>
 	</div> <!-- right panel -->
 	
